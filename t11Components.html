@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Vue Js Tutorial</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id="root">
+	<div class="panel">
+		<div class="panelTitle">
+		This is panel Title
+		</div>
+		<div class="panelContent">	
+		This is panel conetent.This This is panel conetent.ThisThis is panel conetent.ThisThis is panel conetent.ThisThis is panel conetent.ThisThis is panel conetent.ThisThis is panel conetent.ThisThis is panel conetent.This 	
+		</div>
+	    </div>
+	<panel title="This is panel Title" content="This is panel conetent.This This is panel conetent.ThisThis is panel conetent.ThisThis is panel conetent.ThisThis is panel conetent.">
+		<h1>Panel1 Input</h1>
+		<input type="text" name="">
+		<button>Submit</button>
+	</panel>
+
+	
+</div>
+<script type="text/javascript" src="vue.js"> </script>
+<script type="text/javascript">
+	Vue.component("panel",{
+		template:`
+		<div class="panel" v-if="show">
+		<div class="panelTitle">
+		<div class="close" v-on:click="show=false">x</div>
+		{{title}}	
+		</div>
+		<div class="panelContent">	
+		{{content}}
+		<slot></slot>
+		<slot></slot>			
+		</div>
+	    </div>
+		`,
+		props:["title","content"],
+		data: function(){
+        return{
+         show:true,
+        }}
+	});
+	var app=new Vue({
+         el:"#root",
+         data:{
+         	 
+         }, 
+	});
+
+</script>
+</body>
+</html>
+
+

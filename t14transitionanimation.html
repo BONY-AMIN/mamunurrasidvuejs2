@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Vue Js Tutorial</title>
+<style type="text/css">
+	.foo{
+		background: #ACE371;
+		text-align: center;
+		width: 960px;
+		margin: 44px auto;
+		min-height: 222px;
+	}
+	.fade-enter-active,.fade-leave-active{
+    transition:opacity 1s;
+
+    transition:margin-top 1s;
+	}
+	.bar-enter-active,.bar-leave-active{
+		 transition:margin-left 1s;
+   /* transition:transform 1s;*/
+	}
+	.bar-enter,.bar-leave-to{
+		margin-left: -222px
+     /*transform: rotate(-180deg);*/
+	}
+	.fade-enter{
+		opacity: 0;
+		margin-top: -555px
+	}
+	.fade-leave-to{
+		margin-top: 555px
+	}
+	.ul{
+		text-decoration: none;
+	}
+</style>
+</head>
+<body>
+<div id="root">
+	<button @click="show = ! show">Toggle</button>
+	
+	<!-- <div class="foo" v-show="show"> -->
+		<h2>Transition</h2>
+		<input type="text" v-model="newskills"/>
+	<button v-on:click="AddNew()">Add</button>
+		<br><br>
+		<h2>Skills</h2>
+		<ul class="ul">
+			<transition-group name="bar">
+		<li v-for="(skill,i) in skills" :key="i">
+			<p>({{i+1}}).{{skill}}<button v-on:click="remove(i)">x</button></p>
+		</li>
+	</transition-group>
+	</ul>
+	<!-- </div> -->
+
+</div>
+<script type="text/javascript" src="vue.js"> </script>
+<script type="text/javascript">	
+	var app=new Vue({
+         el:"#root",
+         data:{
+         	 show:false,
+         		newskills:"",
+         	skills:["HTML","CSS","Java"], 
+         }, 
+         methods:{
+       	AddNew:function(){
+       		this.skills.push(this.newskills);
+       		this.newskills='';
+       	},
+       	remove:function(i){
+              this.skills.splice(i,1);
+       	}
+       }
+	});
+
+</script>
+</body>
+</html>
+
+

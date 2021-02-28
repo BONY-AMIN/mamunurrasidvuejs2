@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Vue Js Tutorial</title>
+</head>
+<body>
+<div id="root">
+	<h1>{{upper | lower}}</h1>
+	<h1>{{pro |uppercase}}</h1>
+	{{today|bddate}}
+	
+</div>
+<script type="text/javascript" src="vue.js"> </script>
+<script type="text/javascript">
+	Vue.filter("lower",function(s){
+		return s.toLowerCase();
+	})
+	var app=new Vue({
+         el:"#root",
+         data:{
+         	   name:"Bony Amin",
+         	   pro:"Sofware Engineer",
+         	   today:new Date()
+         }, 
+         computed:{
+         	upper:function(){
+         		return this.name.toUpperCase();
+         	}
+         	},
+
+         	filters:{
+         		uppercase:function(s){
+         			return s.toUpperCase();
+         		},
+         		bddate:function(d){
+                      return d.getUTCDate()+"-"+(d.getUTCMonth()+1)+"-"+d.getUTCFullYear();
+         		}
+         	}
+
+	});
+
+</script>
+</body>
+</html>
+

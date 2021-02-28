@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Vue Js Tutorial</title>
+</head>
+<body>
+<div id="root">
+	<ul>
+		<li v-for="(skill,i) in skills">
+			<p>({{i+1}}).{{skill}}<button v-on:click="remove(i)">x</button></p>
+		</li>
+	</ul>
+
+	<br><br>
+	<input type="text" v-model="newskills"/>
+	<button v-on:click="AddNew()">Add</button>
+	
+</div>
+<script type="text/javascript" src="vue.js"> </script>
+<script type="text/javascript">
+	var app=new Vue({
+         el:"#root",
+         data:{
+         	newskills:"",
+         	skills:["HTML","CSS","Java"],       	
+         },
+       methods:{
+       	AddNew:function(){
+       		this.skills.push(this.newskills);
+       		this.newskills='';
+       	},
+       	remove:function(i){
+              this.skills.splice(i,1);
+       	}
+       }
+        
+	});
+
+</script>
+</body>
+</html>
+
